@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="h_7.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:h_7"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ToggleButton x:Name="TogglePaneButton"
+                      Content="菜单"
+                      Checked="showNav"
+                      Unchecked="hideNav"
+                      Grid.Column="0"/>
+        <SplitView x:Name="RootSplitView" OpenPaneLength="200" IsPaneOpen="{x:Bind ViewModel.ifOpen, Mode=TwoWay}" DisplayMode="Inline" IsTabStop="False" Grid.Column="1">
+            <SplitView.Pane>
+                <StackPanel>
+                    <Button x:Name="phone" Content="号码归属地查询" Style="{StaticResource ButtonSetting}" Click="showPhone"/>
+                    <Button x:Name="weather" Content="天气查询" Style="{StaticResource ButtonSetting}" Click="showWeather"/>
+                    <Button x:Name="interpret" Content="单词翻译" Style="{StaticResource ButtonSetting}" Click="showInterpret"/>
+                </StackPanel>
+            </SplitView.Pane>
+        </SplitView>
+        <Grid x:Name="Grid_2" Grid.Column="2">
+            <StackPanel x:Name="phone_" Style="{StaticResource stackpanelSetting}" >
+                <TextBlock Text="号码归属地查询" Style="{StaticResource title}"/>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="电话号码" Style="{StaticResource showSetting_1}"/>
+                    <TextBox x:Name="phonenumber" RelativePanel.AlignRightWithPanel="True" Width="200"/>
+                </RelativePanel>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="所属省份" Style="{StaticResource showSetting_1}"/>
+                    <TextBlock x:Name="province" Style="{StaticResource showSetting_2}"/>
+                </RelativePanel>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="所属城市" Style="{StaticResource showSetting_1}"/>
+                    <TextBlock x:Name="city" Style="{StaticResource showSetting_2}"/>
+                </RelativePanel>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="所属运营商" Style="{StaticResource showSetting_1}"/>
+                    <TextBlock x:Name="operators" Style="{StaticResource showSetting_2}"/>
+                </RelativePanel>
+                <Button Style="{StaticResource Submit}" Click="checkphone"/>
+            </StackPanel>
+            <StackPanel x:Name="weather_" Style="{StaticResource stackpanelSetting}">
+                <TextBlock Text="天气查询" Style="{StaticResource title}"/>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="城市" Style="{StaticResource showSetting_1}"/>
+                    <TextBox x:Name="cityname" RelativePanel.AlignRightWithPanel="True" Width="200"/>
+                </RelativePanel>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="天气" Style="{StaticResource showSetting_1}"/>
+                    <TextBlock x:Name="condition" Style="{StaticResource showSetting_2}" />
+                </RelativePanel>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="最高温度" Style="{StaticResource showSetting_1}"/>
+                    <TextBlock x:Name="temperature_h" Style="{StaticResource showSetting_2}" />
+                </RelativePanel>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="最低温度" Style="{StaticResource showSetting_1}"/>
+                    <TextBlock x:Name="temperature_l" Style="{StaticResource showSetting_2}" />
+                </RelativePanel>
+                <Button Style="{StaticResource Submit}" Click="checkweather"/>
+            </StackPanel>
+            <StackPanel x:Name="interpret_" Style="{StaticResource stackpanelSetting}">
+                <TextBlock Text="单词翻译" Style="{StaticResource title}"/>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="单词" Style="{StaticResource showSetting_1}" />
+                    <TextBox x:Name="word" Width="200" RelativePanel.AlignRightWithPanel="True" />
+                </RelativePanel>
+                <RelativePanel Style="{StaticResource relativepanelSetting}">
+                    <TextBlock Text="释义" Style="{StaticResource showSetting_1}"/>
+                    <TextBlock x:Name="meaning" Style="{StaticResource showSetting_3}" />
+                </RelativePanel>
+                <Button Style="{StaticResource Submit}" Click="checkword" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

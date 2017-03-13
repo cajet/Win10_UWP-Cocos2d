@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="Animal.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Animal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Content="发言" Click ="RanSay_Click" HorizontalAlignment="Left" Margin="161,206,0,0" VerticalAlignment="Top" Height="58" Width="149"/>
+        <Button Click ="SpeSay_Click" Content="确定" HorizontalAlignment="Left" Margin="161,127,0,0" VerticalAlignment="Top" Width="149" Height="52"/>
+        <TextBlock FontSize="22"  x:Name="words" HorizontalAlignment="Left" Margin="449,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="663" Width="724"/>
+        <TextBox x:Name="ani" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="95,41,0,0" Width="293" Height="62"/>
+
+    </Grid>
+</Page>
