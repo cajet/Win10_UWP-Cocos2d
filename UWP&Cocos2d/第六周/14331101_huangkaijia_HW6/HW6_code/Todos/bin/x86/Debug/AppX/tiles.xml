@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tile>
+  <visual>
+
+    <binding template="TileSmall">
+      <text id="1">title</text>
+      <text id="2">details</text>
+      <text id="3">date</text>
+
+    </binding>
+
+    <binding template="TileMedium">
+      <text id="1">title</text>
+      <text id="2">details</text>
+      <text id="3">date</text>
+
+    </binding>
+
+    <binding template="TileWide">
+      <text id="1">title</text>
+      <text id="2">details</text>
+      <text id="3">date</text>
+
+    </binding>
+
+    <binding template="TileLarge">
+      <text id="1">title</text>
+      <text id="2">details</text>
+      <text id="3">date</text>
+
+    </binding>
+
+  </visual>
+</tile>

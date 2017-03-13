@@ -1,0 +1,111 @@
+﻿<Page
+    x:Class="Todos.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Todos"
+    xmlns:md="using:Todos.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="AddAppBarButton" Icon="Add" Label="Add" Click="AddAppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid x:Name="All" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="VisualStateGroup">
+                    <VisualState x:Name="VisualStateMin0">
+                        <VisualState.Setters>
+                            <Setter Target="InlineToDoItemViewGrid.(UIElement.Visibility)" Value="Collapsed"/>
+                            <Setter Target="ToDoListView.(Grid.ColumnSpan)" Value="2"/>
+                        </VisualState.Setters>
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="1"/>
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                    <VisualState x:Name="VisualStateMin800">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="800"/>
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock  Grid.Row="0" x:Name="textBlock" Text="Todos" Style="{StaticResource HeaderTextBlockStyle}"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListView x:Name="ToDoListView" IsItemClickEnabled="True" ItemClick="TodoItem_ItemClicked"
+                      ItemsSource="{x:Bind ViewModel.AllItems}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="md:TodoItem">
+                            <UserControl>
+                                <Grid Height="100">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="wide">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="600"/>
+                                            </VisualState.StateTriggers>
+                                        </VisualState>
+                                        <VisualState x:Name="narrow">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="0"/>
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="img.Visibility" Value="Collapsed"/>
+                                                <Setter Target="listTB.(Grid.ColumnSpan)" Value="2"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="42"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                    <!-- 只绑定了title, 其余请自己完成-->
+                                <CheckBox  VerticalAlignment="Center" Checked="showLine" Unchecked="deleteLine" IsChecked="{x:Bind completed, Mode=TwoWay}"/>
+                                <TextBlock x:Name="listTB" Text="{x:Bind title}" Grid.Column="2" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap" />
+                                <Image Name="image" Grid.Column="1" Source="{x:Bind imagesource}" Height="90" Width="90" Margin="0,3,12,7"/>
+                                <Line Grid.Column="2" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,20,0"/>
+                            </Grid>
+                            </UserControl>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid x:Name="InlineToDoItemViewGrid" Grid.Column="1" >
+                    <ScrollViewer Margin="20">
+                        <StackPanel>
+                        <Image x:Name="image" Source="Assets/background.jpg" Width="350" Height="180"  Margin="4" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill">
+                            <Image.RenderTransform>
+                                <CompositeTransform ScaleX="{Binding Value, ElementName=MySlider}"
+                                        ScaleY="{Binding Value, ElementName=MySlider}"/>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Slider Padding="50,0,50,0" Minimum="0.5" Maximum="1.0" StepFrequency="0.1" x:Name="MySlider"/>
+                        <RelativePanel Width="350">
+                            <AppBarButton x:Name="SelectPictureButton" Click="OpenFile_Click" Icon="Pictures" Label="select" RelativePanel.AlignRightWithPanel="True"/>
+                        </RelativePanel>
+                        <TextBox x:Name="title" Width="350" Header="Title" Margin="0,12,0,0" />
+                            <TextBox x:Name="details" Width="350" Height="96" Margin="0,12,0,0" Header="Details" />
+                            <DatePicker x:Name="date" Width="350" Margin="0,12,0,0" Header="Due Date" HorizontalAlignment="Center" />
+                            <RelativePanel Width="350" Margin="0,24,0,0">
+                                <Button x:Name="createButton" Content="Create" Click="CreateButton_Clicked"></Button>
+                                <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Clicked" RelativePanel.AlignRightWithPanel="True"></Button>
+                            </RelativePanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+</Page>

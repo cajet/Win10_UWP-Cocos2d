@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="20" tilewidth="32" tileheight="32" nextobjectid="2">
+ <tileset firstgid="1" name="tmw_desert_spacing" tilewidth="32" tileheight="32" spacing="1" margin="1" tilecount="48" columns="8">
+  <image source="mymap.png" width="265" height="199"/>
+ </tileset>
+ <layer name="bg" width="100" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztmEEOhCAMRbueQyirGVbq/U83IcFIalscBNHJX7xEqBLbL7R1IKIBAFANl1x/bvA+/8zbsCH217FELD0CvlCX8JyjbW9NN/D5aYzGvI8xleI6Gs+CPI6N58J1vDL/ytDb/7sh6cHn+H1a7DUtevv4dCQ9NJao4ZyMNT1QE7TThduO6oFcbseU52UrF6912ER6PZauJZ1XwX70vAN7PZwS84npIcUY+eNaglZWPQY9ylhO2Lke6Z7R9EB/cg5Hem5fayYpl2B/tEf7tj3tcwj0+I1c71yD3j4CUIta/bO0DvrANuT+yYNyvibH6VA=
+  </data>
+ </layer>
+ <objectgroup name="obj">
+  <object id="1" name="hero" x="159" y="417" width="33.3333" height="30">
+   <properties>
+    <property name="id" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

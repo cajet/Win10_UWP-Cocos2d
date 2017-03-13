@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="LifecycleDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LifecycleDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:ConnectionId='1' x:Name="DeleteAppBarButton" Icon="Add" Label="Add"                              />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:ConnectionId='2' x:Name="textBlock" Grid.Row="0" Text="Todos" Style="{StaticResource HeaderTextBlockStyle}"/>
+        <Grid Grid.Row="1">
+            <ScrollViewer Margin="20">
+                <StackPanel>
+                    <Grid Height="100">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="42"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <CheckBox x:ConnectionId='5' x:Name="checkbox1"                                                     Grid.Column="0" VerticalAlignment="Center" Height="32" Width="32" />
+                        <Image Grid.Column="1" Source="Assets/background.jpg" Height="90" Width="90" Margin="0,3,12,7"/>
+                        <TextBlock Grid.Column="2" Text="完成作业" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap" />
+                        <Line x:ConnectionId='6' x:Name="line1" Grid.Column="2" Stroke="Black" StrokeThickness="2" X1="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                        <AppBarButton Grid.Column="3" Icon="Setting" IsCompact="True" VerticalAlignment="Center">
+                            <AppBarButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Edit"/>
+                                    <MenuFlyoutItem Text="Delete"/>
+                                </MenuFlyout>
+                            </AppBarButton.Flyout>
+                        </AppBarButton>
+                    </Grid>
+                    <Grid Height="100">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="42"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <CheckBox x:ConnectionId='3' x:Name="checkbox2" IsChecked="{Binding Field4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                       Grid.Column="0" VerticalAlignment="Center" Height="32" Width="32" />
+                        <Image Grid.Column="1" Source="Assets/background.jpg" Height="90" Width="90" Margin="0,3,12,7"/>
+                        <TextBlock Grid.Column="2" Text="完成作业" VerticalAlignment="Center" Foreground="Black" FontWeight="Normal" FontSize="15" LineHeight="20" TextWrapping="Wrap" />
+                        <Line x:ConnectionId='4' x:Name="line2"  Grid.Column="2" Stroke="Black" StrokeThickness="2" X1="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                        <AppBarButton Grid.Column="3" Icon="Setting" IsCompact="True" VerticalAlignment="Center">
+                            <AppBarButton.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Edit"/>
+                                    <MenuFlyoutItem Text="Delete"/>
+                                </MenuFlyout>
+                            </AppBarButton.Flyout>
+                        </AppBarButton>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
+
